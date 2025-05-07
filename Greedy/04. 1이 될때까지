@@ -1,0 +1,27 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N, K;
+        N = sc.nextInt();
+        K = sc.nextInt();
+        int cnt = 0;
+
+        if(N < K) return;
+        while(N != 1){
+            if(N % K != 0){
+                N--;
+                cnt++;
+            }
+            else{
+                N /= K;
+                cnt++;
+            }
+        }
+        System.out.println(cnt);
+    }
+}
