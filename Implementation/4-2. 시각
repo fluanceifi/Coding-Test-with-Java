@@ -26,7 +26,12 @@ class Main {
 
         System.out.println(cnt);
 
-
+        /*
+        String.vlaueOf().contains와 Integer.toString().contains의 차이
+        1. String클래스를 사용해서 클래스에 오버로드된 모든 타입을 String으로 변환하는것과 Integer클래스에서 int타입만 String으로 변환하는 것의 차이
+        2. null처리가 문자열로 반환 되는지 NullPointerException으로 반환되는지의 차이
+        3. 내부 구현에서 Integer.toString()호출을 하는지 직접 문자열을 생성하는지의 차이
+        */
 
 
     }
