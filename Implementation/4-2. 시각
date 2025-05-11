@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+// The main method must be in a class named "Main".
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int limit = 60;
+        int cnt = 0;
+
+        for(int i = 0 ; i <= n ; i++){ //시
+            for(int j = 0 ; j < limit ; j++) { //분
+                for (int k = 0; k < limit ; k++) { //초
+                    if (    String.valueOf(i).contains("3") || //String.vlaueOf(_)로 Integer를 String으로 변환한 뒤
+                            String.valueOf(j).contains("3") || //해당 String에서 "3"이 포함되어있는지 contain(_)으로 확인
+                            String.valueOf(k).contains("3")) { // 존재한다면 cnt++로 횟수 누적
+                        cnt++;
+                    }
+                }
+            }
+        }
+
+        System.out.println(cnt);
+
+
+
+
+    }
+}
