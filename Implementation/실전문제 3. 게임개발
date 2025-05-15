@@ -1,0 +1,75 @@
+import java.util.*;
+import java.lang.*;
+
+
+
+class Main {
+
+    public static int direction;
+    //[0] = 북 , [1] = 동, [2] = 남, [3] = 서
+    public static int[] dx = {0, 1, 0, -1};
+    public static int[] dy = {-1, 0 , 1, 0};
+
+    //방문 위치를 저장하기 위한 맵을 생성
+    public static int[][] check = new int[50][50];
+    //맵 전체 정보
+    public static int[][] info = new int[50][50];
+
+    public static void turn_left() {
+        direction -= 1;
+        if (direction == -1) direction = 3;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt(); int m = sc.nextInt();
+        int y = sc.nextInt(); int x = sc.nextInt();
+        direction = sc.nextInt();
+
+        //현재 좌표 방문처리
+        check [y][x] = 1;
+
+        //맵 정보 입력
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                info[i][j] = sc.nextInt();
+            }
+        }
+
+        //본 내용
+        int cnt = 1;
+        int stuck = 0;
+
+        while(true){
+            turn_left();
+            int nx = x + dx[direction];
+            int ny = y + dy[direction];
+            //방문확인 check와 맵정보 info에서 가보지 않은 칸이 존재하는 경우 이동
+            if(check[ny][nx] == 0 && info[ny][nx] == 0){
+                check[ny][nx] = 1;
+                x = nx;
+                y = ny;
+                cnt++;
+                stuck = 0;
+                continue;
+            }
+            else stuck++; //방문확인에서 이미 가본 칸이거나, 맵정보에서 바다부분일 때
+            // 4방향 모두 갈 수 없는 경우 -> ex) 모두 방문했다던가, 바다가 껴있다던가,,
+            if(stuck == 4){
+                // -를 통해 뒤로 향하고
+                nx = x - dx[direction];
+                ny = y - dy[direction];
+                //맵 정보상으로 막혀있지 않다면 이동함
+                if(info[ny][nx] == 0){
+                    x = nx;
+                    y = ny;
+                }
+                else break;
+                stuck = 0; // 뒤로 한칸가고 또 4방향 못갈 때까지 기달리기 위한 초기화
+            }
+        }
+        System.out.println(cnt);
+//이 코드는 stuck이 4일때 자신이 바라보는 방향의 반대방향이 0이여야만 움직이기 때문에 한계가 존재한다. 
+    }
+}
