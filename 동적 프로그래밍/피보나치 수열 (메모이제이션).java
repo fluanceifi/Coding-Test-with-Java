@@ -18,8 +18,8 @@ class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        //100을 입력시 101은 있어야 출력가능
-        int[] arr = new int[n+1];
+        //100을 입력시 0부터 99까지 100개의 인덱스 사용 
+        int[] arr = new int[n];
 
         //100번째를 출력하고 싶다면, 100-1을 해야 100번째가 출력됨 why? index는 0부터 시작
         System.out.println(fibonachi(arr, n-1));
