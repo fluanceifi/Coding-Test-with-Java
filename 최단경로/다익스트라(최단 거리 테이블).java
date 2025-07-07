@@ -100,7 +100,7 @@ class Main {
             int b = sc.nextInt();
             int c = sc.nextInt();
 
-            //a -> b 의 비용은 c로 b는 index, c는 distance를 저장한다.
+            //a -> b 의 비용은 c로, a라는 ArrayList에서 b로가는 index는 c만큼의 distance가 요구된다는 걸 저장한다.
             graph.get(a).add(new Node(b, c));
         }
 
