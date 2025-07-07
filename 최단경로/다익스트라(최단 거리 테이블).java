@@ -57,7 +57,8 @@ class Main {
         visited[start] = true;
                                 //2차원 배열이라서 그렇다. get(start).size()는 start노드와 연결된 노드(간선)의 개수와 같다. 
         for(int j = 0 ; j < graph.get(start).size() ; j++){
-            //get = [], get(start).get(j) = [start][j]  | start기준으로 d[](최단 거리 테이블)을 생성하는 것
+            //d[graph.get(start).get(j).getIndex()] = "start"번 노드를 int j를 통해 순서대로 돌면서 index를 가져온다.  | start기준으로 연결된 노드의 d[index]를 가져 옴.
+            //graph.get(start).get(j).getDistance() = 해당 d[index]에 저장될 거리 값을 가져온다. | index에 해당하는 distance값을 가져 옴.
             d[graph.get(start).get(j).getIndex()] = graph.get(start).get(j).getDistance();
         }
         //시작 노드를 제외한 전체 n - 1개의 노드에 대해 반복
@@ -74,7 +75,7 @@ class Main {
                 int cost = d[now] + graph.get(now).get(j).getDistance();
 
                 //여기서 비교가 이루어지고, 더 짧은 경우엔 최단 거리 테이블이 갱신됨.
-                //cost와 [now][j]와 연결된 노드(index)의 거리를 비교한다고 생각하면 된다.
+                //cost와 now + 연결된 노드(index)의 거리를 비교한다고 생각하면 된다.
                 if(cost < d[graph.get(now).get(j).getIndex()]){
                     d[graph.get(now).get(j).getIndex()] = cost;
                 }
