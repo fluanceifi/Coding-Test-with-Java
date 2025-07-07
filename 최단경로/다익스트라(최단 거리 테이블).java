@@ -55,7 +55,7 @@ class Main {
         //시작 노드에 대해서 초기화
         d[start] = 0;
         visited[start] = true;
-                                //2차원 배열이라서 그렇다.
+                                //2차원 배열이라서 그렇다. get(start).size()는 start노드와 연결된 노드(간선)의 개수와 같다. 
         for(int j = 0 ; j < graph.get(start).size() ; j++){
             //get = [], get(start).get(j) = [start][j]  | start기준으로 d[](최단 거리 테이블)을 생성하는 것
             d[graph.get(start).get(j).getIndex()] = graph.get(start).get(j).getDistance();
