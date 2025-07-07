@@ -100,7 +100,7 @@ class Main {
             int b = sc.nextInt();
             int c = sc.nextInt();
 
-            //a -> b 의 비용은 class
+            //a -> b 의 비용은 c로 b는 index, c는 distance를 저장한다.
             graph.get(a).add(new Node(b, c));
         }
 
