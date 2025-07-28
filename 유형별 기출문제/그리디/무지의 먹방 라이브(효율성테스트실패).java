@@ -24,7 +24,7 @@ class Solution {
             cnt++; //음식 먹은 횟수 늘리기
 
         }
-        answer = food_times[i % idx]; //그게아니고 정샂적으로
+        answer = i % idx + 1;
         return answer;
     }
 
