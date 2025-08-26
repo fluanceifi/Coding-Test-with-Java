@@ -7,6 +7,8 @@ class Main{
     public static int plus, sub, mul, divi;
     public static int min = (int) 1e9, max = (int) -1e9;
 
+
+    //DFS의 본질이 무엇인가? 트리형태를 그려가면서 모든 경우의 수를 다 확인하는 브루트포스이다.
     public static void dfs(int i, int now){
         if(i == n){
             min = Math.min(min, now);
