@@ -148,7 +148,7 @@ class Main{
                 break;
             }
             //설치된 장애물 없애기
-            for(int j = 0 ; j < spaceList.get(j).size() ; j++){
+            for(int j = 0 ; j < spaceList.get(j).size() ; j++){ //now의 크기가 3으로 고정되어있어서 get(j).size() 생략 후 3으로 작성해도 된다.
                 int y = spaceList.get(i).get(j).getY();
                 int x = spaceList.get(i).get(j).getX();
                 arr[y][x] = 'X';
