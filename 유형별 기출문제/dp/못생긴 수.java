@@ -1,31 +1,37 @@
 import java.util.*;
 
-class Main{
+public class Main{
     public static int n;
-    public static int[] dp = new int[1000];
-
+    public static int[] dp;
+    
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
-        n=sc.nextInt();
+        n = sc.nextInt();
+
+        dp = new int[n];
+        
         dp[0] = 1;
-        int i2=0,i3=0,i5=0,next2=2,next3=3,next5=5;
+
+        
+        int i2 = 0, i3 = 0, i5 = 0;
+
         for(int i = 1 ; i < n ; i++){
-            dp[i] = Math.min(next2, Math.min(next3,next5));
-            if(next2 == dp[i]){
+            dp[i] = Math.min(dp[i2] * 2, Math.min(dp[i3] * 3, dp[i5] * 5));
+
+            if(dp[i] == dp[i2] * 2){
                 i2++;
-                next2 = dp[i2] * 2;
             }
-            if(next3 == dp[i]){
+            
+            if(dp[i] == dp[i3] * 3){
                 i3++;
-                next3 = dp[i3] * 3;
             }
-            if(next5 == dp[i]){
+
+            if(dp[i] == dp[i5] * 5){
                 i5++;
-                next5 = dp[i5] * 5;
             }
         }
 
-        System.out.println(dp[n-1]);
+        System.out.println(dp[n-1]);        
     }
 }
