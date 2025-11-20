@@ -1,40 +1,37 @@
 import java.util.*;
 
-
-class Main{
-
+public class Main{
     public static int n;
-    public static ArrayList<Integer> v = new ArrayList<>();
-    public static int[] dp = new int [2000];
-
+    public static int[] dp;
+    
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
         n = sc.nextInt();
 
-        for(int i = 0 ; i < n ; i++){
-            v.add(sc.nextInt());
-            dp[i] = 1; //DP는 최대 병사의 수이다. (각 병사 한 명만 있어도 길이는 1이므로 1로 초기화)
-        }
+        dp = new int[n];
+        
+        dp[0] = 1;
 
-        // '가장 긴 감소하는 부분 수열(LDS)'을 찾기 위해 배열을 뒤집어, '가장 긴 증가하는 부분 수열(LIS)' 문제로 변환한다.
-        Collections.reverse(v);
+        
+        int i2 = 0, i3 = 0, i5 = 0;
 
+        for(int i = 1 ; i < n ; i++){
+            dp[i] = Math.min(dp[i2] * 2, Math.min(dp[i3] * 3, dp[i5] * 5));
 
-        // i번째 인덱스에서 끝나는 최대 길이를 찾는 문제 (LIS)
-        for(int i = 1 ; i < n ; i ++){
-            for(int j = 0 ; j < i ; j++){
-                if(v.get(j) < v.get(i)){
-                    dp[i] = Math.max(dp[i], dp[j] + 1); //기존 dp[i]와 (j로 끝나는 LIS 길이 + 1) 중 더 긴 값을 선택
-                }
+            if(dp[i] == dp[i2] * 2){
+                i2++;
+            }
+            
+            if(dp[i] == dp[i3] * 3){
+                i3++;
+            }
+
+            if(dp[i] == dp[i5] * 5){
+                i5++;
             }
         }
 
-        int maxValue = 0;
-        for(int i = 0 ; i < n ; i++){
-            maxValue = Math.max(maxValue, dp[i]); //dp에서 최대 수를 찾는다.
-        }
-        System.out.println(n - maxValue); //전체 병사 수 - 최대 병사 수 = 열외 인원
-
+        System.out.println(dp[n-1]);        
     }
 }
